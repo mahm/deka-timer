@@ -12,8 +12,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import TimeView from "./components/TimeView";
-import EditTimeView from "./components/EditTimeView";
+import TimeView from "./components/TimeView.vue";
+import EditTimeView from "./components/EditTimeView.vue";
 
 @Component({
   components: {
@@ -24,7 +24,7 @@ import EditTimeView from "./components/EditTimeView";
 export default class App extends Vue {
   private seconds: number = 0;
   private isCounting: boolean = false;
-  private timer;
+  private timer: any;
 
   public onStart(sec: number): void {
     this.isCounting = true;
