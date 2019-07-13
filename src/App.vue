@@ -1,29 +1,62 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="vcenter">
+    <div v-if="isCounting">
+      <time-view :seconds="seconds" />
+      <b-button rounded @click="onReset">Reset</b-button>
+    </div>
+    <div v-else>
+      <edit-time-view @start="onStart" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component, Vue } from "vue-property-decorator";
+import TimeView from "./components/TimeView";
+import EditTimeView from "./components/EditTimeView";
 
 @Component({
   components: {
-    HelloWorld,
-  },
+    TimeView,
+    EditTimeView
+  }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private seconds: number = 0;
+  private isCounting: boolean = false;
+  private timer;
+
+  public onStart(sec: number): void {
+    this.isCounting = true;
+    this.seconds = sec;
+    this.timer = setInterval(this.count, 1000);
+  }
+
+  private onReset(): void {
+    this.seconds = 0;
+    this.isCounting = false;
+    this.complete();
+  }
+
+  private count(): void {
+    if (this.seconds > 0) {
+      this.seconds--;
+    } else {
+      this.complete();
+    }
+  }
+
+  private complete() {
+    clearInterval(this.timer);
+  }
+}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style style="scss">
+.vcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 </style>
