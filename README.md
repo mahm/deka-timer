@@ -30,5 +30,10 @@ yarn run lint
 yarn run test:unit
 ```
 
+### Materials
+
+* [digital-7 (mono).ttf](https://www.1001fonts.com/digital+clock+monospaced-fonts.html)
+* [mobile-phone-ringtone1.mp3](https://soundeffect-lab.info/sound/machine/)
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

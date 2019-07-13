@@ -1,4 +1,5 @@
 export function toSeconds(min: string, sec: string) {
+  // tslint:disable-next-line:radix
   return parseInt(min || "0") * 60 + parseInt(sec || "0");
 }
 
