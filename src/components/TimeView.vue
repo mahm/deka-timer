@@ -29,8 +29,9 @@ export default class TimeView extends Vue {
 
 <style style="scss" scoped>
 .timer {
-  font-size: 30vw;
-  text-align: center;
+  font-size: 40vw;
+  height: 60vh;
+  line-height: 54vh;
 }
 .flashing {
   color: #ff3860;
